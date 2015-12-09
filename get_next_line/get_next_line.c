@@ -6,13 +6,13 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 12:10:12 by mbonowic          #+#    #+#             */
-/*   Updated: 2015/12/08 15:26:09 by mbonowic         ###   ########.fr       */
+/*   Updated: 2015/12/09 18:08:55 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		check_endl(char *s)
+int				check_endl(char *s)
 {
 	int			i;
 
@@ -26,87 +26,58 @@ int		check_endl(char *s)
 	return (0);
 }
 
-int		gnl_conditions(int fd, char **buf, char **line)
+static int			gnl_start(t_ctrl *file, char **line)
 {
-	int			res_read;
+	char			*tmp;
 
-	if (fd < 0 || line == NULL)
+	if (file->fd < 0 || line == NULL)
 		return (-1);
-	*buf = ft_strnew(BUFF_SIZE + 1);
-	if (*buf == NULL)
-		return (-1);
-	res_read = read(fd, *buf, BUFF_SIZE);
-	if (res_read == -1)
+	if (file->buf == NULL)
 	{
-		free(*buf);
-		return (-1);
+		file->buf = ft_strnew(BUFF_SIZE);
+		if (file->buf == NULL)
+			return (-1);
+		file->flag = read(file->fd, file->buf, BUFF_SIZE);
 	}
-	if (res_read == 0)
-		return (0);
+	else if (check_endl(file->fd))
+		return (1);
+	else
+	{
+		tmp = ft_strnew(BUFF_SIZE);
+		if (tmp == NULL)
+			return (-1);
+		file->flag = read(file->fd, tmp, BUFF_SIZE);
+		file->buf = ft_strjoin(file->buf, tmp);
+		if (file->buf == NULL)
+			return (-1);
+		free(tmp);
+	}
 	return (1);
 }
 
-char	*bigger_buf(char *s, int fd, int *flag)
+int					bigger_buf(t_ctrl *file)
 {
-	int		i;
-	char	*new;
 
-	new = ft_strnew(ft_strlen(s) + BUFF_SIZE + 1);
-	if (new == NULL)
-		return (NULL);
-	new = ft_strcpy(new, s);
-	i = read(fd, &new[ft_strlen(s)], BUFF_SIZE);
-	if (i < 0)
-		return (NULL);
-	if (i == 0)
-		*flag = 0;
-	return (new);
 }
 
-char	*cut_last(char **s)
+char				*gnl_copy(char **buf)
 {
-	int		i;
-	char	*tmp;
-
-	i = 0;
-	tmp = NULL;
-	while (*s[i] != '\n' && *s[i] != '\0')
-		i++;
-	if (*s[i] == '\n')
-	{
-		*s[i] = '\0';
-		tmp = ft_strdup(*s);
-	}
-	return (tmp);
 }
 
-int		get_next_line(int const fd, char **line)
+int					get_next_line(int const fd, char **line)
 {
-	char		*buf;
-	static char	*tmp;
-	int			flag;
+	static s_ctrl	file;
+	int				flag;
 
-	flag = gnl_conditions((int)fd, &buf, line);
-	if (flag == -1)
-		return (-1);
-	if (tmp != NULL)
-		buf = ft_strjoin(tmp, buf);
-		tmp = NULL;
-	if (flag == 0)
+	file.fd = (int)fd;
+	flag = gnl_start(&file, line);
+	if (flag)
 	{
-		*line = ft_strdup(buf);
-	}
-	else
-	{
-		while (!check_endl(buf) && flag)
+		while (check_endl(file->buf))
 		{
-			buf = bigger_buf(buf, fd, &flag);
-			if (buf == NULL)
-				return (-1);
+			bigger_buf(&file);
 		}
-		tmp = cut_last(&buf);
-		*line = ft_strdup(buf);
+		*line = gnl_copy(&file);
 	}
-	free(buf);
-	return (flag);
+	return ();
 }
