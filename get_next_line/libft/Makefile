@@ -81,7 +81,7 @@ SRC = 	ft_atoi.c \
 
 HEADERS = libft.h
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = 
 
 OBS = $(SRC:.c=.o)
 

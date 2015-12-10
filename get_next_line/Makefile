@@ -4,7 +4,7 @@ SRCS = get_next_line.c main.c
 
 OBJ = $(SRCS:.c=.o)
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS= 
 
 all: $(NAME)
 

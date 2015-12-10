@@ -12,11 +12,19 @@
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 1
+# define BUFF_SIZE 10
+# define FD_NBR 10
 
 # include "libft/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef struct	s_ctrl
+{
+	char		*buf;
+	int			fd;
+	int			flag;
+}				t_ctrl;
 
 int				get_next_line(int const fd, char **line);
 

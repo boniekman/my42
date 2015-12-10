@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int				check_endl(char *s)
+static int		check_endl(char *s)
 {
 	int			i;
 
@@ -34,16 +34,16 @@ static int			gnl_start(t_ctrl *file, char **line)
 		return (-1);
 	if (file->buf == NULL)
 	{
-		file->buf = ft_strnew(BUFF_SIZE);
+		file->buf = ft_strnew(BUFF_SIZE + 1);
 		if (file->buf == NULL)
 			return (-1);
 		file->flag = read(file->fd, file->buf, BUFF_SIZE);
 	}
-	else if (check_endl(file->fd))
-		return (1);
 	else
 	{
-		tmp = ft_strnew(BUFF_SIZE);
+		if (check_endl(file->buf))
+			return (1);
+		tmp = ft_strnew(BUFF_SIZE + 1);
 		if (tmp == NULL)
 			return (-1);
 		file->flag = read(file->fd, tmp, BUFF_SIZE);
@@ -55,29 +55,76 @@ static int			gnl_start(t_ctrl *file, char **line)
 	return (1);
 }
 
-int					bigger_buf(t_ctrl *file)
+static int			bigger_buf(t_ctrl *file)
 {
-
+	char			*tmp;
+	char			*tmp2;
+	
+	tmp = ft_strdup(file->buf);
+	if (tmp == NULL)
+		return (-1);
+	free(file->buf);
+	file->buf = NULL;
+	tmp2 = ft_strnew(BUFF_SIZE + 1);
+	if (tmp2 == NULL)
+		return (-1);
+	file->flag = read(file->fd, tmp2, BUFF_SIZE);
+	file->buf = ft_strjoin(tmp, tmp2);
+	if (file->buf == NULL)
+		return (-1);
+	free(tmp);
+	free(tmp2);
+	return (1);
 }
 
-char				*gnl_copy(char **buf)
+static char			*gnl_copy(t_ctrl *file, int i, int j)
 {
+	char			*tmp;
+	char			*tmp2;
+
+	tmp = ft_strdup(file->buf);
+	if (tmp == NULL)
+		return (NULL);
+	free(file->buf);
+	while (tmp[i] != '\n' && tmp[i] != '\0')
+	{
+		i++;
+	}
+	tmp2 = ft_strnew(i + 1);
+	tmp2 = ft_strncat(tmp2, tmp, i);
+	file->buf = ft_strnew(ft_strlen(tmp) - i);
+	if (tmp[i] != '\0' && tmp[i + 1] != '\0')
+	{
+		i++;
+		while (tmp[i + j] != '\0')
+		{
+			file->buf[j] = tmp[i + j];
+			j++;
+		}
+	}
+	free(tmp);
+	return (tmp2);
 }
 
 int					get_next_line(int const fd, char **line)
 {
-	static s_ctrl	file;
+	static t_ctrl	file;
 	int				flag;
 
 	file.fd = (int)fd;
 	flag = gnl_start(&file, line);
 	if (flag)
 	{
-		while (check_endl(file->buf))
+		while (check_endl(file.buf) == 0 && file.flag)
 		{
-			bigger_buf(&file);
+			if (bigger_buf(&file) == -1)
+				return (-1);
+			if (file.flag == 0)
+				break ;
 		}
-		*line = gnl_copy(&file);
+		*line = gnl_copy(&file, 0, 0);
+		if (file.flag == 0 && check_endl(file.buf) == 0)
+			flag = 0;
 	}
-	return ();
+	return (flag);
 }
