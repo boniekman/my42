@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:02:24 by mbonowic          #+#    #+#             */
-/*   Updated: 2015/11/27 13:57:22 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/01/24 13:21:28 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ char	*ft_strnew(size_t size)
 	str = (char*)malloc(size * sizeof(char));
 	if (str == NULL)
 		return (NULL);
-	bzero(str, size);
+	ft_bzero(str, size);
 	return (str);
 }
