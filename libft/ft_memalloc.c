@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 10:43:26 by mbonowic          #+#    #+#             */
-/*   Updated: 2015/11/27 17:28:39 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/01/26 09:16:25 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	*ft_memalloc(size_t size)
 	tab = malloc(size);
 	if (tab == NULL)
 		return (NULL);
-	bzero(tab, size);
+	ft_bzero(tab, size);
 	return (tab);
 }
