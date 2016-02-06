@@ -17,7 +17,10 @@ SRC= main.c \
 	 get_next_line.c \
 	 parse_file.c \
 	 ft_split.c \
-	 #print_functions.c
+	 mlx_start.c \
+	 print_functions.c \
+	 cavalery.c \
+
 OBJ=$(SRC:.c=.o)
 all: $(NAME)
 

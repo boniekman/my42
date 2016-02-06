@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/24 14:45:18 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/04 13:39:40 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/06 20:48:50 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_input(t_map map)
 		y = 0;
 		while (y < map.columns)
 		{
-			ft_putnbr(map.tab[x][y].val);
+			ft_putnbr(map.tab[x][y].z);
 			ft_putstr("  ");
 			y++;
 		}
@@ -55,6 +55,6 @@ int		main(int argc, char **argv)
 	if (set_map(&map, argv[1]) == -1)
 		return (er_msg());
 	print_input(map);
-	start_mlx(&map, 500, 500);
+	start_mlx(&map, TERM_W, TERM_H);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/24 13:39:48 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/04 14:03:53 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/07 00:13:11 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FDF_H
 # define BUFF_SIZE 32
 # define RAD 0.0175
+# define TERM_W 1500
+# define TERM_H 1000
 
 # include "libft/libft.h"
 # include "minilibx/mlx.h"
@@ -25,8 +27,8 @@
 
 typedef struct	s_point
 {
-	int			x;
-	int			y;
+	double		x;
+	double		y;
 	int			z;
 }				t_point;
 
@@ -35,6 +37,7 @@ typedef struct	s_map
 	t_point		**tab;
 	int			columns;
 	int			rows;
+	int			max_z;
 }				t_map;
 
 typedef struct	s_mlx_att
@@ -50,7 +53,9 @@ int				set_row(char *str, t_map *map, int posx);
 int				er_msg(void);
 char			**ft_split(char *str);
 
-int				start_mlx(t_map *map);
+int				start_mlx(t_map *map, int offx, int offy);
+void			put_lines(t_mlx_att all);
+
 void			cavalery(t_mlx_att, int offx, int offy);
 
 #endif

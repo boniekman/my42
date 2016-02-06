@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/24 16:01:32 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/04 13:48:57 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/07 00:13:14 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int			set_row(char *str, t_map *map, int posx)
 	int		i;
 
 	i = 0;
+	if (!(map->max_z))
+		map->max_z = 0;
 	numbers = ft_split(str);
 	while (numbers[i] != NULL)
 	{
@@ -30,7 +32,9 @@ int			set_row(char *str, t_map *map, int posx)
 	i = 0;
 	while (i < map->columns)
 	{
-		map->tab[posx][i].c = ft_atoi(numbers[i]);
+		map->tab[posx][i].z = ft_atoi(numbers[i]);
+		if (ft_atoi(numbers[i]) > map->max_z)
+			map->max_z = ft_atoi(numbers[i]);
 		free(numbers[i]);
 		i++;
 	}
