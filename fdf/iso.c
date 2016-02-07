@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cavalery.c                                         :+:      :+:    :+:   */
+/*   iso.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/04 13:32:19 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/07 17:07:15 by mbonowic         ###   ########.fr       */
+/*   Created: 2016/02/07 17:06:56 by mbonowic          #+#    #+#             */
+/*   Updated: 2016/02/07 17:33:31 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define Y all.map->tab[x][y].y
 #define Z all.map->tab[x][y].z
 
-void		cavalery(t_mlx_att all, int offx, int offy)
+void		iso(t_mlx_att all, int offx, int offy)
 {
 	int		x;
 	int		y;
@@ -31,8 +31,8 @@ void		cavalery(t_mlx_att all, int offx, int offy)
 		while (y < all.map->columns)
 		{
 			all.map->tab[x][y].color = count_color(all.map->max_z, Z);
-			Y = sy * y + Z * (cos(30 * RAD) / tan(45 * RAD)) + offy;
-			X = sx * x + Z * (sin(30 * RAD) / tan(45 * RAD)) + offx;
+			Y = sy * y + (sx * x + Z) / 2 + offy;
+			X = sx * x - Z + offx;
 			y++;
 		}
 		x++;

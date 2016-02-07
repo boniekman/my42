@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/24 13:39:48 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/07 00:13:11 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/07 17:33:35 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct	s_point
 	double		x;
 	double		y;
 	int			z;
+	unsigned	color;
 }				t_point;
 
 typedef struct	s_map
@@ -56,6 +57,10 @@ char			**ft_split(char *str);
 int				start_mlx(t_map *map, int offx, int offy);
 void			put_lines(t_mlx_att all);
 
-void			cavalery(t_mlx_att, int offx, int offy);
+unsigned		count_color(int max_z, int z);
+unsigned		color(t_point a, t_point b);
+
+void			cavalery(t_mlx_att all, int offx, int offy);
+void			iso(t_mlx_att all, int offx, int offy);
 
 #endif

@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_start.c                                        :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/06 19:23:39 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/07 17:29:08 by mbonowic         ###   ########.fr       */
+/*   Created: 2016/02/07 16:00:07 by mbonowic          #+#    #+#             */
+/*   Updated: 2016/02/07 17:33:37 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int				start_mlx(t_map *map, int x, int y)
+unsigned		count_color(int max_z, int z)
 {
-	t_mlx_att	all;
+	double		c;
 
-	all.mlx = mlx_init();
-	all.win = mlx_new_window(all.mlx, x, y, "fdf");
-	all.map = map;
-	iso(all, 50, 50);
-	return (1);
+	if (z == max_z)
+		return (0x0FFFFFF);
+	c = (double)z / (double)max_z;
+	if (c == 0)
+		return (0x0404040);
+	if (c < 0.25)
+		return (0x0080808);
+	if (c < 0.5)
+		return (0x00F0F0F);
+	else
+		return (0x08F8F8F);
+}
+
+unsigned		color(t_point a, t_point b)
+{
+	unsigned	r;
+
+	r = (b.color - a.color) / 2;
+	return (a.color + r);
 }

@@ -19,7 +19,9 @@ SRC= main.c \
 	 ft_split.c \
 	 mlx_start.c \
 	 print_functions.c \
+	 color.c \
 	 cavalery.c \
+	 iso.c \
 
 OBJ=$(SRC:.c=.o)
 all: $(NAME)

@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 19:23:57 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/07 00:13:09 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/07 17:10:54 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,7 @@ void			point_swap(t_point *p1, t_point *p2)
 	tmp = p2->z;
 	p2->z = p1->z;
 	p1->z = tmp;
-
 }
-
-unsigned int	color(t_mlx_att all, int s, int e)
-{
-	all.map->max_z = 10;
-	if (s == e)
-		return (0x0FFFFFF);
-	else
-		return (0x0000000);
-}
-
 
 void			put_vertical(t_mlx_att l, t_point p1, t_point p2)
 {
@@ -48,7 +37,7 @@ void			put_vertical(t_mlx_att l, t_point p1, t_point p2)
 	b = p1.y - a * p1.x;
 	while (p1.x <= p2.x)
 	{
-		mlx_pixel_put(l.mlx, l.win, p1.x * a + b, p1.x, color(l, p1.x, p2.x));
+		mlx_pixel_put(l.mlx, l.win, p1.x * a + b, p1.x, color(p1, p2));
 		p1.x++;
 	}
 }
@@ -66,22 +55,22 @@ void			put_horizontal(t_mlx_att l, t_point p1, t_point p2)
 		b = p1.y - a * p1.x;
 		while (p1.x <= p2.x)
 		{
-			mlx_pixel_put(l.mlx, l.win, p1.x * a + b, p1.x, color(l, p1.x, p2.x));
-			p1.x += 0.1;
+			mlx_pixel_put(l.mlx, l.win, p1.x * a + b, p1.x, color(p1, p2));
+			p1.x += 0.01;
 		}
 	}
 	else
 		while (p1.y <= p2.y)
 		{
-			mlx_pixel_put(l.mlx, l.win, p1.y, p1.x, color(l, p1.y, p2.y));
+			mlx_pixel_put(l.mlx, l.win, p1.y, p1.x, color(p1, p2));
 			p1.y++;
 		}
 }
 
-void	put_lines(t_mlx_att all)
+void			put_lines(t_mlx_att all)
 {
-	int		x;
-	int		y;
+	int			x;
+	int			y;
 
 	x = 0;
 	while (x < all.map->rows)
@@ -97,5 +86,5 @@ void	put_lines(t_mlx_att all)
 		}
 		x++;
 	}
-	mlx_loop(all.mlx); 
+	mlx_loop(all.mlx);
 }
