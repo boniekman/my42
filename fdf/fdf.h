@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/24 13:39:48 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/07 17:33:35 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/09 15:33:42 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct	s_point
 {
 	double		x;
 	double		y;
-	int			z;
+	double		z;
 	unsigned	color;
 }				t_point;
 
@@ -39,6 +39,7 @@ typedef struct	s_map
 	int			columns;
 	int			rows;
 	int			max_z;
+	int			scale;
 }				t_map;
 
 typedef struct	s_mlx_att
@@ -46,6 +47,7 @@ typedef struct	s_mlx_att
 	void		*mlx;
 	void		*win;
 	t_map		*map;
+	char		af;
 }				t_mlx_att;
 
 int				get_next_line(int fd, char **line);

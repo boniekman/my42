@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 19:23:57 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/07 17:10:54 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/09 17:36:11 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,14 @@ void			put_vertical(t_mlx_att l, t_point p1, t_point p2)
 	double		a;
 	double		b;
 
+	if (p2.x < p1.x)
+		point_swap(&p2, &p1);
 	a = (p2.y - p1.y) / (p2.x - p1.x);
 	b = p1.y - a * p1.x;
 	while (p1.x <= p2.x)
 	{
 		mlx_pixel_put(l.mlx, l.win, p1.x * a + b, p1.x, color(p1, p2));
-		p1.x++;
+		p1.x += 0.01;
 	}
 }
 
@@ -86,5 +88,4 @@ void			put_lines(t_mlx_att all)
 		}
 		x++;
 	}
-	mlx_loop(all.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/07 17:06:56 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/07 17:33:31 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/09 15:48:05 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void		iso(t_mlx_att all, int offx, int offy)
 {
 	int		x;
 	int		y;
-	int		sx;
-	int		sy;
+	double	sx;
+	double	sy;
 
-	sy = (TERM_W - 2 * offy) / all.map->columns;
-	sx = (TERM_H - 2 * offx) / all.map->rows;
+	sx = (TERM_H) / (all.map->rows + all.map->columns / 2);
+	sy = (TERM_W) / (all.map->columns + all.map->rows / 2);
 	x = 0;
 	while (x < all.map->rows)
 	{
@@ -31,8 +31,8 @@ void		iso(t_mlx_att all, int offx, int offy)
 		while (y < all.map->columns)
 		{
 			all.map->tab[x][y].color = count_color(all.map->max_z, Z);
-			Y = sy * y + (sx * x + Z) / 2 + offy;
-			X = sx * x - Z + offx;
+			Y = sy * y + (sx * x + all.map->scale * Z) / 2 + offy;
+			X = sx * x - all.map->scale * Z + offx;
 			y++;
 		}
 		x++;
