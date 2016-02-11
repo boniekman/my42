@@ -6,13 +6,13 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/24 14:45:18 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/06 20:48:50 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/10 15:37:06 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	print_input(t_map map)
+static void	print_input(t_map map)
 {
 	int		x;
 	int		y;
@@ -32,28 +32,29 @@ void	print_input(t_map map)
 	}
 }
 
-int		er_msg(void)
+static int	er_msg(t_map *map)
 {
-	ft_putendl("Error");
+	ft_putendl("Argument Error");
+	end(map);
 	return (0);
 }
 
-void	map_init(t_map *map)
+static void	map_init(t_map *map)
 {
 	map->tab = NULL;
 	map->rows = 0;
 	map->columns = 0;
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_map	map;
 
 	if (argc != 2)
-		return (er_msg());
+		return (er_msg(0));
 	map_init(&map);
 	if (set_map(&map, argv[1]) == -1)
-		return (er_msg());
+		return (er_msg(&map));
 	print_input(map);
 	start_mlx(&map, TERM_W, TERM_H);
 	return (0);

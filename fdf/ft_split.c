@@ -6,13 +6,13 @@
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 10:02:11 by exam              #+#    #+#             */
-/*   Updated: 2016/01/26 12:30:32 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/10 15:30:39 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		words(char *str)
+static int	words(char *str)
 {
 	int		i;
 	int		w;
@@ -34,7 +34,7 @@ int		words(char *str)
 	return (w);
 }
 
-char	**next_word(char **ret, char *str, int i)
+static char	**next_word(char **ret, char *str, int i)
 {
 	int		j;
 
@@ -63,7 +63,7 @@ char	**next_word(char **ret, char *str, int i)
 	return (next_word(ret, &str[j], i + 1));
 }
 
-char	**ft_split(char *str)
+char		**ft_split(char *str)
 {
 	char	**ret;
 	int		i;

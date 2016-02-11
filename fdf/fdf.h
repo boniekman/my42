@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/24 13:39:48 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/09 15:33:42 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/10 20:56:23 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 # include "libft/libft.h"
 # include "minilibx/mlx.h"
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -52,17 +51,16 @@ typedef struct	s_mlx_att
 
 int				get_next_line(int fd, char **line);
 int				set_map(t_map *map, char *filename);
-int				set_row(char *str, t_map *map, int posx);
-int				er_msg(void);
 char			**ft_split(char *str);
 
 int				start_mlx(t_map *map, int offx, int offy);
 void			put_lines(t_mlx_att all);
+void			end(t_map *map);
 
 unsigned		count_color(int max_z, int z);
 unsigned		color(t_point a, t_point b);
 
 void			cavalery(t_mlx_att all, int offx, int offy);
-void			iso(t_mlx_att all, int offx, int offy);
+void			par(t_mlx_att all, int offx, int offy);
 
 #endif

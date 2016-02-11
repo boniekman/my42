@@ -6,14 +6,13 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 19:23:57 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/09 17:36:11 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/10 16:23:07 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
-void			point_swap(t_point *p1, t_point *p2)
+static void		point_swap(t_point *p1, t_point *p2)
 {
 	double		tmp;
 
@@ -28,7 +27,7 @@ void			point_swap(t_point *p1, t_point *p2)
 	p1->z = tmp;
 }
 
-void			put_vertical(t_mlx_att l, t_point p1, t_point p2)
+static void		put_vertical(t_mlx_att l, t_point p1, t_point p2)
 {
 	double		a;
 	double		b;
@@ -44,7 +43,7 @@ void			put_vertical(t_mlx_att l, t_point p1, t_point p2)
 	}
 }
 
-void			put_horizontal(t_mlx_att l, t_point p1, t_point p2)
+static void		put_horizontal(t_mlx_att l, t_point p1, t_point p2)
 {
 	double		a;
 	double		b;
@@ -65,7 +64,7 @@ void			put_horizontal(t_mlx_att l, t_point p1, t_point p2)
 		while (p1.y <= p2.y)
 		{
 			mlx_pixel_put(l.mlx, l.win, p1.y, p1.x, color(p1, p2));
-			p1.y++;
+			p1.y += 0.01;
 		}
 }
 

@@ -21,7 +21,8 @@ SRC= main.c \
 	 print_functions.c \
 	 color.c \
 	 cavalery.c \
-	 iso.c \
+	 par.c \
+	 end.c
 
 OBJ=$(SRC:.c=.o)
 all: $(NAME)
@@ -36,9 +37,12 @@ $(NAME):
 
 clean:
 	rm -f $(OBJ)
+	make -C libft/ clean
 
 fclean: clean
 	rm -f $(NAME)
+	make -C libft/ fclean
+	make -C minilibx/ clean
 
 re: fclean all
 .PHONY: all clean fclean re

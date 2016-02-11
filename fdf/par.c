@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iso.c                                              :+:      :+:    :+:   */
+/*   par.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/07 17:06:56 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/09 15:48:05 by mbonowic         ###   ########.fr       */
+/*   Created: 2016/02/10 20:24:29 by mbonowic          #+#    #+#             */
+/*   Updated: 2016/02/10 20:24:38 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define Y all.map->tab[x][y].y
 #define Z all.map->tab[x][y].z
 
-void		iso(t_mlx_att all, int offx, int offy)
+void		par(t_mlx_att all, int offx, int offy)
 {
 	int		x;
 	int		y;

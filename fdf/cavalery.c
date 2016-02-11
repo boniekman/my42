@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 13:32:19 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/09 17:36:16 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/10 15:35:11 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ void		cavalery(t_mlx_att all, int offx, int offy)
 		while (y < all.map->columns)
 		{
 			all.map->tab[x][y].color = count_color(all.map->max_z, Z);
-			Y = sy * y + all.map->scale * Z * (cos(30 * RAD) / tan(45 * RAD)) + offy;
-			X = sx * x + all.map->scale * Z * (sin(30 * RAD) / tan(45 * RAD)) + offx;
+			Y = sy * y + all.map->scale *
+				Z * (cos(30 * RAD) / tan(45 * RAD)) + offy;
+			X = sx * x + all.map->scale *
+				Z * (sin(30 * RAD) / tan(45 * RAD)) + offx;
 			y++;
 		}
 		x++;

@@ -6,11 +6,12 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 12:10:12 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/01/24 14:56:23 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/10 16:25:05 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 static int		check_endl(char *s)
 {
