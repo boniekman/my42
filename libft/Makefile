@@ -6,7 +6,7 @@
 #    By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 17:44:19 by mbonowic          #+#    #+#              #
-#    Updated: 2015/11/27 23:11:59 by mbonowic         ###   ########.fr        #
+#    Updated: 2016/02/11 15:07:42 by mbonowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,9 @@ SRC = 	ft_atoi.c \
 		ft_btree_infix_ap.c \
 		ft_bt_ins.c \
 		ft_btree_prefix_ap.c \
-		ft_btree_suffix_ap.c
+		ft_btree_suffix_ap.c \
+		get_next_line.c \
+		ft_split.c
 
 HEADERS = libft.h
 
@@ -90,6 +92,7 @@ all: $(NAME)
 $(NAME) :
 	gcc $(FLAGS) -c $(SRC) -I $(HEADERS)
 	ar -rcs $(NAME) $(OBS)
+	ranlib $(NAME)
 
 clean:
 	rm -f $(OBS)

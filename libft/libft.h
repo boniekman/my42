@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 11:23:38 by mbonowic          #+#    #+#             */
-/*   Updated: 2015/11/27 23:10:52 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/11 14:52:17 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 # define LIBFT_H
 
 # include <unistd.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+
+#define BUFF_SIZE 64
 
 typedef struct		s_list
 {
@@ -101,4 +104,6 @@ void				ft_bt_ins(t_btree **r, t_btree *e, int (*f)(void*, void*));
 void				ft_btree_del_node(t_btree **r);
 void				ft_btree_destroy(t_btree **root);
 
+int					get_next_line(int fd, char **line);
+char				**ft_split(char *str);
 #endif
