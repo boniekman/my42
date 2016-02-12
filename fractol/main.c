@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 16:37:18 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/11 20:10:55 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/12 14:40:03 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,10 @@
 int			main(void)
 {
 	t_all	all;
-	t_color	c;
 	int		x;
 	int		y;
 
 	x = 0;
-	c.r = 255;
-	c.g = 0;
-	c.b = 0;
 	all.mlx = mlx_init();
 	all.win = mlx_new_window(all.mlx, WDTH, HIGH, "fractol");
 	all.i.i = mlx_new_image(all.mlx, WDTH, HIGH);
@@ -34,7 +30,7 @@ int			main(void)
 		y = 0;
 		while (y < HIGH - 1)
 		{
-			put_pixel(&all.i, y, x, julia(x, y));
+			put_pixel(&all.i, y, x, julia(x, y, 2500));
 			y++;
 		}
 		x++;

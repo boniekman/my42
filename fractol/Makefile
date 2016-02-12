@@ -1,4 +1,3 @@
-# p
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -7,15 +6,16 @@
 #    By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/24 14:32:18 by mbonowic          #+#    #+#              #
-#    Updated: 2016/02/04 11:40:50 by mbonowic         ###   ########.fr        #
+#    Updated: 2016/02/12 14:13:55 by mbonowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= fractol
-FLAGS= -Wall -Wextra -Werror
+FLAGS= -Wall -Wextra -Werror -Ofast
 SRC= main.c \
 	 fractols.c \
 	 draw.c \
+	 math.c \
 
 OBJ=$(SRC:.c=.o)
 all: $(NAME)

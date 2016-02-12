@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 15:38:24 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/11 18:45:11 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/12 14:42:21 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,6 @@ typedef struct	s_c
 	double		i;
 }				t_c;
 
-typedef struct	s_color
-{
-	unsigned	r;
-	unsigned	g;
-	unsigned	b;
-}				t_color;
-
 typedef struct	s_img
 {
 	void		*i;
@@ -53,9 +46,10 @@ typedef struct	s_all
 	char		*err;
 }				t_all;
 
-void			put_pixel(t_i *i, int x, int y, t_color color);
-t_color			julia(int x, int y);
+void			put_pixel(t_i *i, int x, int y, unsigned c);
+unsigned		julia(int x, int y, int max_i);
 
 t_c				c_pow(t_c p);
 t_c				c_add(t_c p, t_c c);
+
 #endif
