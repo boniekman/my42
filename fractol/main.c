@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 16:37:18 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/16 13:29:57 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/16 16:00:19 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		end(char *s)
 	exit(0);
 }
 
-void		put_fract(t_all a, unsigned (*f)(int, int, int))
+void		put_fract(t_all a, unsigned (*f)(int, int, t_all))
 {
 	int		x;
 	int		y;
@@ -29,7 +29,7 @@ void		put_fract(t_all a, unsigned (*f)(int, int, int))
 		y = 0;
 		while (y < HIGH - 1)
 		{
-			put_pixel(&a.i, y, x, f(x, y, a.iterations));
+			put_pixel(&a.i, y, x, f(x, y, a));
 			y++;
 		}
 		x++;

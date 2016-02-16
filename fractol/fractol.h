@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 15:38:24 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/16 13:29:59 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/16 15:48:00 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct	s_all
 	void		*mlx;
 	void		*win;
 	t_i			i;
-	unsigned	(*fract)(int, int, int);
+	unsigned	(*fract)(int, int, struct s_all);
 	int			iterations;
 	int			offx;
 	int			offy;
@@ -50,11 +50,11 @@ typedef struct	s_all
 
 t_all			start(t_all all, char *s);
 void			end(char *s);
-void			put_fract(t_all a, unsigned (*f)(int, int, int));
+void			put_fract(t_all a, unsigned (*f)(int, int, t_all));
 void			main_hook(t_all all);
 
 void			put_pixel(t_i *i, int x, int y, unsigned c);
-unsigned		julia(int x, int y, int max_i);
+unsigned		julia(int x, int y, t_all a);
 
 t_c				c_pow(t_c p);
 t_c				c_add(t_c p, t_c c);
