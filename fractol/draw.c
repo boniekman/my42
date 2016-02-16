@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 16:53:45 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/12 14:42:25 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/16 13:29:54 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	put_pixel(t_i *i, int x, int y, unsigned c)
 {
-	if (x > 0 && x < i->width - 1 && y > 0 && y < i->high - 1)
+	if (x > 0 && x < WDTH - 1 && y > 0 && y < HIGH - 1)
 	{
 		i->data[x * i->sline + y * i->bpp / 8] = c % 256;
 		c /= 256;

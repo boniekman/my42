@@ -6,7 +6,7 @@
 #    By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/24 14:32:18 by mbonowic          #+#    #+#              #
-#    Updated: 2016/02/12 14:13:55 by mbonowic         ###   ########.fr        #
+#    Updated: 2016/02/16 13:00:38 by mbonowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC= main.c \
 	 fractols.c \
 	 draw.c \
 	 math.c \
+	 hook.c
 
 OBJ=$(SRC:.c=.o)
 all: $(NAME)

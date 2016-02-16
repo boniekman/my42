@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 15:38:24 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/12 14:42:21 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/16 13:29:59 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ typedef struct	s_img
 	int			bpp;
 	int			sline;
 	int			e;
-	int			width;
-	int			high;
 }				t_i;
 
 typedef struct	s_all
@@ -43,8 +41,17 @@ typedef struct	s_all
 	void		*mlx;
 	void		*win;
 	t_i			i;
-	char		*err;
+	unsigned	(*fract)(int, int, int);
+	int			iterations;
+	int			offx;
+	int			offy;
+	int			zoom;
 }				t_all;
+
+t_all			start(t_all all, char *s);
+void			end(char *s);
+void			put_fract(t_all a, unsigned (*f)(int, int, int));
+void			main_hook(t_all all);
 
 void			put_pixel(t_i *i, int x, int y, unsigned c);
 unsigned		julia(int x, int y, int max_i);
