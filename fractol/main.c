@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 16:37:18 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/17 10:47:14 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/17 14:11:49 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,18 @@ void		put_fract(t_all a, unsigned (*f)(int, int, t_all))
 t_all		start(t_all all, char *s)
 {
 	if (ft_strcmp(s, "-J") == 0)
-		all.fract = &julia;
+		all.fract = &julia;	
+	else if (ft_strcmp(s, "-M") == 0)
+		all.fract = &mandelbrot;	
 	else
 		end("./fractol -J -M -B");
-	all.iterations = 20;
+	all.iterations = 50;
 	all.offy = 0;
 	all.offx = 0;
 	all.zoom = 1;
 	all.m_x = 0;
 	all.m_y = 0;
+	all.motion_block = 1;
 	all.mlx = mlx_init();
 	all.win = mlx_new_window(all.mlx, WDTH, HIGH, "fractol");
 	all.i.i = mlx_new_image(all.mlx, WDTH, HIGH);

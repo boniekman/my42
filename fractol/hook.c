@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:39:18 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/17 11:42:42 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/17 14:11:46 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ static int	expose(t_all *all)
 
 static int	motion(int x, int y, t_all *all)
 {
+	if (all->motion_block == -1)
+		return (0);
 	all->m_x = (double)x / (double)WDTH * 4 - 2;
 	all->m_y = (double)y / (double)HIGH * 4 - 2;
 	mlx_clear_window(all->mlx, all->win);
 	put_fract(*all, all->fract);
-	mlx_put_image_to_window(all->mlx, all->win, all->i.i, all->offx, all->offy);
+	mlx_put_image_to_window(all->mlx, all->win, all->i.i, 0, 0);
 	return (0);	
 }
 
@@ -59,17 +61,28 @@ static int	choice(int keycode, t_all *all)
 		(all->iterations)++;
 	if (keycode == 78)
 		(all->iterations)--;
+	if (keycode == 49)
+		all->motion_block *= -1;
 	put_fract(*all, all->fract);
+	mlx_put_image_to_window(all->mlx, all->win, all->i.i, 0, 0);
 	return (0);
 }
 
 static int	roll(int keycode, int x, int y, t_all *all)
 {
-	x = y;
 	if (keycode == KMU || keycode == KMCL)
+	{
+		all->offx *= 1.1;
+		all->offy *= 1.1;
 		all->zoom *= 1.1;
+	}
+	x = y;
 	if (keycode == KMD || keycode == KMCR)
+	{
+		all->offx /= 1.1;
+		all->offy /= 1.1;
 		all->zoom /= 1.1;
+	}
 	mlx_clear_window(all->mlx, all->win);
 	put_fract(*all, all->fract);
 	mlx_put_image_to_window(all->mlx, all->win, all->i.i, 0, 0);
