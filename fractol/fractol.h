@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 15:38:24 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/16 15:48:00 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/17 11:42:39 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ typedef struct	s_all
 	int			iterations;
 	int			offx;
 	int			offy;
-	int			zoom;
+	double		zoom;
+	double		m_x;
+	double		m_y;
 }				t_all;
 
 t_all			start(t_all all, char *s);

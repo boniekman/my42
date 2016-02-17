@@ -6,15 +6,23 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:39:18 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/16 16:00:26 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/17 11:42:42 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #define KP 2
-#define KPM 1
-#define KR 3
-#define KRM 2
+#define KPM (1L<<0)
+
+#define KMCL 1
+#define KMCR 2
+#define KMU 5
+#define KMD 4
+#define KML 7
+#define KMR 6
+
+#define MOTNOT 6
+#define MOTNOTM (1L<<6)
 
 static int	expose(t_all *all)
 {
@@ -22,6 +30,16 @@ static int	expose(t_all *all)
 	put_fract(*all, all->fract);
 	mlx_put_image_to_window(all->mlx, all->win, all->i.i, all->offx, all->offy);
 	return (0);
+}
+
+static int	motion(int x, int y, t_all *all)
+{
+	all->m_x = (double)x / (double)WDTH * 4 - 2;
+	all->m_y = (double)y / (double)HIGH * 4 - 2;
+	mlx_clear_window(all->mlx, all->win);
+	put_fract(*all, all->fract);
+	mlx_put_image_to_window(all->mlx, all->win, all->i.i, all->offx, all->offy);
+	return (0);	
 }
 
 static int	choice(int keycode, t_all *all)
@@ -41,9 +59,18 @@ static int	choice(int keycode, t_all *all)
 		(all->iterations)++;
 	if (keycode == 78)
 		(all->iterations)--;
-	if (keycode == 49)
-		(all->zoom)++;
-	ft_putnbr(all->iterations);
+	put_fract(*all, all->fract);
+	return (0);
+}
+
+static int	roll(int keycode, int x, int y, t_all *all)
+{
+	x = y;
+	if (keycode == KMU || keycode == KMCL)
+		all->zoom *= 1.1;
+	if (keycode == KMD || keycode == KMCR)
+		all->zoom /= 1.1;
+	mlx_clear_window(all->mlx, all->win);
 	put_fract(*all, all->fract);
 	mlx_put_image_to_window(all->mlx, all->win, all->i.i, 0, 0);
 	return (0);
@@ -53,5 +80,7 @@ void		main_hook(t_all all)
 {
 	mlx_expose_hook(all.win, expose, &all);
 	mlx_hook(all.win, KP, KPM, choice, &all);
+	mlx_hook(all.win, MOTNOT, MOTNOTM, motion, &all);
+	mlx_mouse_hook(all.win, roll, &all);
 	mlx_loop(all.mlx);
 }

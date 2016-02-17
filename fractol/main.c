@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 16:37:18 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/16 16:00:19 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/17 10:47:14 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ t_all		start(t_all all, char *s)
 	all.offy = 0;
 	all.offx = 0;
 	all.zoom = 1;
+	all.m_x = 0;
+	all.m_y = 0;
 	all.mlx = mlx_init();
 	all.win = mlx_new_window(all.mlx, WDTH, HIGH, "fractol");
 	all.i.i = mlx_new_image(all.mlx, WDTH, HIGH);

@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 17:24:41 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/16 16:01:29 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/17 10:46:48 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ unsigned	julia(int x, int y, t_all a)
 	int		i;
 
 	i = 0;
-	c.r = -0.73;
-	c.i = 0.19;
+	c.r = a.m_x;
+	c.i = a.m_y;
 	p.r = ((double)x + a.offx - (double)WDTH / 2) / ((double)WDTH / 4) / a.zoom;
 	p.i = ((double)y + a.offy - (double)HIGH / 2) / ((double)HIGH / 4) / a.zoom;
 	while (i < a.iterations && p.r * p.r + p.i * p.i < 4)
@@ -29,8 +29,5 @@ unsigned	julia(int x, int y, t_all a)
 		p = c_add(p, c);
 		i++;
 	}
-	if (i == a.iterations)
-		return (0x0000000);
-	else
-		return (0x03 * i);
+	return (0x03 * i);
 }
