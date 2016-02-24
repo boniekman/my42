@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 15:38:24 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/18 14:04:31 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/24 18:16:18 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ typedef struct	s_all
 	double		zoom;
 	double		m_x;
 	double		m_y;
+	double		after_x;
+	double		after_y;
 	int			motion_block;
+	unsigned	c;
 }				t_all;
 
 t_all			start(t_all all, char *s);
@@ -57,9 +60,12 @@ void			put_fract(t_all a, unsigned (*f)(double, double, t_all));
 void			main_hook(t_all all);
 
 void			put_pixel(t_i *i, int x, int y, unsigned c);
+void			color(int k, t_all *all);
 
 unsigned		julia(double x, double y, t_all a);
 unsigned		mandelbrot(double x, double y, t_all a);
+unsigned		wtf_ship(double x, double y, t_all a);
+unsigned		wtf_ship2(double x, double y, t_all a);
 
 t_c				c_pow(t_c p);
 t_c				c_add(t_c p, t_c c);

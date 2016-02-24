@@ -6,7 +6,7 @@
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 17:24:41 by mbonowic          #+#    #+#             */
-/*   Updated: 2016/02/18 14:21:44 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/02/24 18:05:24 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ unsigned	julia(double x, double y, t_all a)
 		p = c_add(p, c);
 		i++;
 	}
-	return (4 * i);
+	return (a.c * i);
 }
 
 unsigned	mandelbrot(double x, double y, t_all a)
@@ -49,5 +49,47 @@ unsigned	mandelbrot(double x, double y, t_all a)
 		p = c_add(p, c);
 		i++;
 	}
-	return (4 * i);
+	return (a.c * i);
+}
+
+unsigned	wtf_ship(double x, double y, t_all a)
+{
+	t_c		c;
+	t_c		p;
+	int		i;
+
+	i = 0;
+	p.r = 0;
+	p.i = 0;
+	c.r = x;
+	c.i = y;
+	while (i < a.iterations && p.r * p.r + p.i * p.i < 4)
+	{
+		p.r = p.r * p.r - p.i * p.i;
+		p.i = 2 * fabs(p.r) * fabs(p.i);
+		p = c_add(p, c);
+		i++;
+	}
+	return (a.c * i);
+}
+
+unsigned	wtf_ship2(double x, double y, t_all a)
+{
+	t_c		c;
+	t_c		p;
+	int		i;
+
+	i = 0;
+	p.r = 0;
+	p.i = 0;
+	c.r = x;
+	c.i = y;
+	while (i < a.iterations && p.r * p.r + p.i * p.i < 4)
+	{
+		p.r = p.r * p.r + p.i * p.i;
+		p.i = 2 * fabs(p.r) * fabs(p.i);
+		p = c_add(p, c);
+		i++;
+	}
+	return (a.c * i);
 }
