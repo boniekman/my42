@@ -6,7 +6,7 @@
 #    By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 17:44:19 by mbonowic          #+#    #+#              #
-#    Updated: 2016/02/11 15:07:42 by mbonowic         ###   ########.fr        #
+#    Updated: 2016/02/28 19:25:45 by mbonowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,21 +65,9 @@ SRC = 	ft_atoi.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
 		ft_strstrim.c \
-		ft_lstnew.c \
-		ft_lstdelone.c \
-		ft_lstdel.c \
-		ft_lstadd.c \
-		ft_lstiter.c \
-		ft_lstmap.c \
-		ft_btree_create_node.c \
-		ft_btree_del_node.c \
-		ft_btree_destroy.c \
-		ft_btree_infix_ap.c \
-		ft_bt_ins.c \
-		ft_btree_prefix_ap.c \
-		ft_btree_suffix_ap.c \
 		get_next_line.c \
-		ft_split.c
+		ft_split.c \
+		ft_latoi.c
 
 HEADERS = libft.h
 

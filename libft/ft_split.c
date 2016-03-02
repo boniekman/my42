@@ -6,11 +6,11 @@
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 10:02:11 by exam              #+#    #+#             */
-/*   Updated: 2016/02/11 14:53:08 by mbonowic         ###   ########.fr       */
+/*   Updated: 2016/03/02 09:22:15 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" 
+#include "libft.h"
 
 static int	words(char *str)
 {
