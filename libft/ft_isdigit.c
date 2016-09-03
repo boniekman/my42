@@ -5,16 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 13:32:19 by mbonowic          #+#    #+#             */
-/*   Updated: 2015/11/25 14:54:38 by mbonowic         ###   ########.fr       */
+/*   Created: 2016/02/25 22:15:07 by mbonowic          #+#    #+#             */
+/*   Updated: 2016/02/25 22:15:10 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int		ft_isdigit(int c)
 {
-	if (c >= '0' && c <= '9')
+	if (c >= 48 && c <= 57)
 		return (1);
-	return (0);
+	else
+		return (0);
 }

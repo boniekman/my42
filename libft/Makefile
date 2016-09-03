@@ -6,7 +6,7 @@
 #    By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 17:44:19 by mbonowic          #+#    #+#              #
-#    Updated: 2016/02/28 19:25:45 by mbonowic         ###   ########.fr        #
+#    Updated: 2016/05/18 11:31:14 by mbonowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,33 @@ SRC = 	ft_atoi.c \
 		ft_strstrim.c \
 		get_next_line.c \
 		ft_split.c \
-		ft_latoi.c
+		ft_latoi.c \
+		\
+		ft_printf.c \
+	  	ft_putwchar.c \
+	  	bools.c \
+	  	put_colors.c \
+	  	hour.c \
+	  	instruction.c \
+	  	conversion.c \
+	  	preci_field.c \
+	  	flag.c \
+	  	modifier.c \
+	  	di.c \
+	  	o.c \
+	  	xp.c \
+	  	cs.c \
+	  	u.c \
+	  	b.c \
+	  	a.c \
+	  	n.c \
+	  	ft_strlen_wchar.c \
+	  	ft_itoa_base.c \
+	  	ft_uitoa_base.c \
+	  	padding_ws.c \
+	  	padding_c.c \
+	  	ft_round.c \
+	  	ft_isspace.c \
 
 HEADERS = libft.h
 
@@ -89,3 +115,4 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+.PHONY : all clean fclean re

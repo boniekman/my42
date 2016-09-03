@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 11:07:50 by mbonowic          #+#    #+#             */
-/*   Updated: 2015/11/23 13:07:04 by mbonowic         ###   ########.fr       */
+/*   Created: 2016/02/25 22:19:21 by mbonowic          #+#    #+#             */
+/*   Updated: 2016/05/18 11:25:19 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,10 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	i;
+	size_t count;
 
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
+	count = 0;
+	while (s[count])
+		count++;
+	return (count);
 }

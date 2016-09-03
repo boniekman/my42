@@ -5,21 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 13:08:01 by mbonowic          #+#    #+#             */
-/*   Updated: 2015/11/27 15:44:19 by mbonowic         ###   ########.fr       */
+/*   Created: 2016/02/25 22:16:59 by mbonowic          #+#    #+#             */
+/*   Updated: 2016/05/18 11:18:20 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+int		ft_putstr(const char *s)
 {
-	int		i;
-
-	i = 0;
-	while ((char)s[i] != '\0')
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
+	return (write(1, s, ft_strlen(s)));
 }

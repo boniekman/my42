@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 13:10:04 by mbonowic          #+#    #+#             */
-/*   Updated: 2015/11/25 09:46:28 by mbonowic         ###   ########.fr       */
+/*   Created: 2016/02/25 22:18:15 by mbonowic          #+#    #+#             */
+/*   Updated: 2016/05/18 11:16:34 by mbonowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_strcpy(char *dst, const char *src)
 {
-	unsigned	i;
+	int i;
 
 	i = 0;
-	while (src[i] != '\0')
+	while (src[i])
 	{
 		dst[i] = src[i];
 		i++;
